@@ -1,0 +1,181 @@
+[{
+        "id": 1,
+        "name": "Bulbasaur",
+        "type": "Grass",
+        "CP": 45
+    },
+    {
+        "id": 4,
+        "name": "Charmander",
+        "type": "Fire",
+        "CP": 39
+    },
+    {
+        "id": 7,
+        "name": "Squirtle",
+        "type": "Water",
+        "CP": 44
+    },
+    {
+        "id": 25,
+        "name": "Pikachu",
+        "type": "Electric",
+        "CP": 55
+    },
+    {
+        "id": 39,
+        "name": "Jigglypuff",
+        "type": "Fairy",
+        "CP": 115
+    },
+    {
+        "id": 52,
+        "name": "Meowth",
+        "type": "Normal",
+        "CP": 40
+    },
+    {
+        "id": 54,
+        "name": "Psyduck",
+        "type": "Water",
+        "CP": 50
+    },
+    {
+        "id": 58,
+        "name": "Growlithe",
+        "type": "Fire",
+        "CP": 55
+    },
+    {
+        "id": 63,
+        "name": "Abra",
+        "type": "Psychic",
+        "CP": 25
+    },
+    {
+        "id": 66,
+        "name": "Machop",
+        "type": "Fighting",
+        "CP": 70
+    },
+    {
+        "id": 74,
+        "name": "Geodude",
+        "type": "Rock",
+        "CP": 40
+    },
+    {
+        "id": 92,
+        "name": "Gastly",
+        "type": "Ghost",
+        "CP": 30
+    },
+    {
+        "id": 133,
+        "name": "Eevee",
+        "type": "Normal",
+        "CP": 55
+    },
+    {
+        "id": 143,
+        "name": "Snorlax",
+        "type": "Normal",
+        "CP": 160
+    },
+    {
+        "id": 149,
+        "name": "Dragonite",
+        "type": "Dragon",
+        "CP": 91
+    },
+    {
+        "id": 2,
+        "name": "Ivysaur",
+        "type": "Grass",
+        "CP": 60
+    },
+    {
+        "id": 5,
+        "name": "Charmeleon",
+        "type": "Fire",
+        "CP": 58
+    },
+    {
+        "id": 8,
+        "name": "Wartortle",
+        "type": "Water",
+        "CP": 59
+    },
+    {
+        "id": 12,
+        "name": "Butterfree",
+        "type": "Bug",
+        "CP": 60
+    },
+    {
+        "id": 16,
+        "name": "Pidgey",
+        "type": "Flying",
+        "CP": 40
+    },
+    {
+        "id": 19,
+        "name": "Rattata",
+        "type": "Normal",
+        "CP": 30
+    },
+    {
+        "id": 27,
+        "name": "Sandshrew",
+        "type": "Ground",
+        "CP": 50
+    },
+    {
+        "id": 35,
+        "name": "Clefairy",
+        "type": "Fairy",
+        "CP": 70
+    },
+    {
+        "id": 43,
+        "name": "Oddish",
+        "type": "Grass",
+        "CP": 45
+    },
+    {
+        "id": 56,
+        "name": "Mankey",
+        "type": "Fighting",
+        "CP": 40
+    },
+    {
+        "id": 69,
+        "name": "Bellsprout",
+        "type": "Grass",
+        "CP": 50
+    },
+    {
+        "id": 81,
+        "name": "Magnemite",
+        "type": "Electric",
+        "CP": 25
+    },
+    {
+        "id": 95,
+        "name": "Onix",
+        "type": "Rock",
+        "CP": 35
+    },
+    {
+        "id": 104,
+        "name": "Cubone",
+        "type": "Ground",
+        "CP": 50
+    },
+    {
+        "id": 147,
+        "name": "Dratini",
+        "type": "Dragon",
+        "CP": 41
+    }
+]
