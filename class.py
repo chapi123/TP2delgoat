@@ -1,5 +1,6 @@
-import json
+import json, random
 from hash_map_set import HashMap, HashSet
+from linked_list import SingleLink
 
 class Pokemon:
     def __init__(self, id, name, type, CP):

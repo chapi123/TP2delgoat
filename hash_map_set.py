@@ -57,7 +57,6 @@ class HashMap:
 
     def print_map(self):
         for i, bucket in enumerate(self.buckets):
-            print(f"Bucket {i}:")
 
             current = bucket.head
 
@@ -65,6 +64,18 @@ class HashMap:
                 key, value = current.data
                 print(f"  {key}: {value}")
                 current = current.next
+    
+    def values(self):
+        values = []
+
+        for bucket in self.buckets:
+            current = bucket.head
+
+            while current is not None:
+                values.append(current.data[1])
+                current = current.next
+
+        return values
 
 class HashSet:
     def __init__(self, size):
@@ -104,10 +115,8 @@ class HashSet:
     def remove(self, data):
         index = self.get_index(self.hash(data))
         bucket = self.buckets[index]
-
-        return bucket.delete(data)
+        bucket.data
 
     def print_set(self):
         for i, bucket in enumerate(self.buckets):
-            print(f"Bucket {i}:")
-            bucket.print_values()
+            bucket.print_values(i)
