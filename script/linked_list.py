@@ -19,10 +19,14 @@ class SingleLink:
             self.tail = None
 
     def print_values (self):
-        current = self.head
-        while current != None:
-            print(current.data)
-            current = current.next
+        if self.head:
+            current = self.head
+            if current == None:
+                return None
+            while current != None:
+                print(current.data)
+                current = current.next
+        else: return None
 
     def iscycled (self):
         slow = self.head

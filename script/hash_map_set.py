@@ -125,4 +125,16 @@ class HashSet:
 
     def print_set(self):
         for i, bucket in enumerate(self.buckets):
-            bucket.print_values(i)
+            bucket.print_values()
+
+    def values(self):
+        values = []
+
+        for bucket in self.buckets:
+            current = bucket.head
+
+            while current is not None:
+                values.append(current.data)
+                current = current.next
+
+        return values

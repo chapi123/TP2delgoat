@@ -30,3 +30,24 @@ def load_medals():
     for medal in medals:
         set.put(medal)
     return set
+
+import random
+
+def preload_medals(medals_set):
+    import random
+
+def preload_medals(medals_set):
+    set = HashSet(2)
+    medals = list(medals_set.values())
+    counter = 0
+
+    while counter != 2:
+        selected = random.choice(medals)
+        if selected not in set.values():
+            set.put(selected)
+            counter += 1
+
+    return set
+
+def select_random_pokemon(map):
+    return random.choice(map.values())
