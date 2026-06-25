@@ -1,5 +1,5 @@
-from linked_list import SingleLink
-from queue_stack import Queue
+from script.linked_list import SingleLink
+from script.queue_stack import Queue
 
 def create_PC ():
     PC = SingleLink

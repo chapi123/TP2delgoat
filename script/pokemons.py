@@ -1,6 +1,6 @@
 import json, random
-from hash_map_set import HashMap, HashSet
-from linked_list import SingleLink
+from script.hash_map_set import HashMap, HashSet
+from script.linked_list import SingleLink
 
 class Pokemon:
     def __init__(self, id, name, type, CP):
@@ -10,7 +10,7 @@ class Pokemon:
         self.CP = CP
 
 def load_pokemons():
-    with open('pokedex.json', 'r') as file:
+    with open('jsons\pokedex.json', 'r') as file:
         pokedex = json.load(file)
         size = len(pokedex)
 
@@ -21,7 +21,7 @@ def load_pokemons():
     return map
 
 def load_medals():
-    with open("medals.json", "r") as file:
+    with open("jsons\medals.json", "r") as file:
         medals = json.load(file)
         size = len(medals)
     

@@ -1,4 +1,4 @@
-from linked_list import SingleLink
+from script.linked_list import SingleLink
 
 class Stack:
     def __init__(self, values=None):

@@ -15,13 +15,22 @@ def main_menu():
     print("11. Exit system")
     print("=" * 55)
 
-    opcion = int(input("Select an option: "))
-    return opcion
+    try:
+        option = int(input("Select an option: "))
+        return option
+    except:
+        return"Invalid option"
 
 def pokedex_select():
     print("Select One of the following options: ")
     print("1. View full Pokedex")
     print("2. Search a Pokemon by his ID")
     print("3. Exit")
-    opcion = int(input("Select an option: "))
-    return opcion
+    try:
+        option = int(input("Select an option: "))
+        return option
+    except:
+        return "Invalid option"
+
+def enter_to_continue():
+    input("Press enter to continue ")

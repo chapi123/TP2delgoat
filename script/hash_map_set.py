@@ -1,18 +1,12 @@
-from linked_list import SingleLink
+from script.linked_list import SingleLink
 
 class HashMap:
     def __init__(self, size):
         self.size = size
         self.buckets = [SingleLink() for _ in range(size)]
 
-    def hash(self, key):
-        total = 0
-        for char in str(key):
-            total += ord(char)
-        return total
-
     def get_index(self, key):
-        return self.hash(key) % self.size
+        return hash(key) % self.size
 
     def put(self, key, value):
         index = self.get_index(key)
@@ -76,6 +70,18 @@ class HashMap:
                 current = current.next
 
         return values
+    
+    def keys(self):
+        keys = []
+
+        for bucket in self.buckets:
+            current = bucket.head
+
+            while current:
+                keys.append(current.data[0])
+                current = current.next
+
+        return keys
 
 class HashSet:
     def __init__(self, size):
@@ -95,12 +101,12 @@ class HashSet:
         if self.get(data):
             return False
 
-        index = self.get_index(self.hash(data))
+        index = self.get_index(hash(data))
         self.buckets[index].add_node(data)
         return True
 
     def get(self, data):
-        index = self.get_index(self.hash(data))
+        index = self.get_index(hash(data))
         bucket = self.buckets[index]
 
         current = bucket.head
@@ -113,7 +119,7 @@ class HashSet:
         return None
 
     def remove(self, data):
-        index = self.get_index(self.hash(data))
+        index = self.get_index(hash(data))
         bucket = self.buckets[index]
         bucket.data
 
