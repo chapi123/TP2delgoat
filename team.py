@@ -1,7 +1,17 @@
 from PC_medic import add_pokemon_PC
+import random
 
 def create_team():
     team = [None for _ in range(6)]
+    return team
+
+def random_team(team, pokedex):
+    counter = 0
+    while team[len(team)-1] == None:
+        selected = random.choice(pokedex.values())
+        if selected not in team:
+            team[counter] = selected
+            counter += 1
     return team
 
 def show_team(team):
@@ -21,11 +31,14 @@ def is_empty(team):
     return all(x is None for x in team)
 
 def add_pokemon_team(team, pokemon, PC):
-    index = find_none(team)
-    if index is not None:
-          team[index] = pokemon
-          return True
+    if pokemon not in team:
+        index = find_none(team)
+        if index is not None:
+            team[index] = pokemon
+            return True
     else:
+        print(f"{pokemon.name} is already in your Team")
+        print(f"Moving {pokemon.name} to your PC")
         add_pokemon_PC(PC, pokemon)
         return None
 

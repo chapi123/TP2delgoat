@@ -1,3 +1,5 @@
+from script.sorting import quick_sort
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -75,6 +77,21 @@ class SingleLink:
             current = current.next
             nodes += 1
         return nodes
+    
+    def print_PC_values(PC):
+        if PC.head:
+            current = PC.head
+            if current == None:
+                return None
+            while current != None:
+                print(
+                    "ID:", current.data.id,
+                    "Name:", current.data.name,
+                    "Type:", current.data.type,
+                    "CP:", current.data.CP,
+                )
+                current = current.next
+        else: return None   
 
     def sort_nodes(self):
         changed = True
@@ -86,6 +103,53 @@ class SingleLink:
                     current.data, current.next.data = current.next.data, current.data
                     changed = True         
                 current = current.next
+
+    def bubble_sort(self):
+        changed = True
+        while changed:
+            current = self.head
+            changed = False
+            while current is not None and current.next is not None:
+                if current.data.name > current.next.data.name :
+                    current.data, current.next.data = current.next.data, current.data
+                    changed = True         
+                current = current.next
+
+    def insertion_sort(self):
+        if self.head is None or self.head.next is None:
+            return
+
+        current = self.head.next
+
+        while current is not None:
+            value = current.data
+            position = self.head
+            while position != current and position.data.type < value.type:
+                position = position.next
+
+            if position != current:
+                temp = value
+                current_node = position
+                while current_node != current.next:
+                    current_node.data, temp = temp, current_node.data
+                    current_node = current_node.next
+
+            current = current.next
+
+    def quick_sort_nodes(self):
+        array = []
+        current = self.head
+        while current is not None:
+            array.append(current.data)
+            current = current.next
+        quick_sort(array)
+        current = self.head
+        i = 0
+        while current is not None:
+            current.data = array[i]
+            current = current.next
+            i += 1
+
 
     def invert_nodes(self):
         prev = None

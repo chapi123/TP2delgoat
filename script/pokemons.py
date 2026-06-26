@@ -21,7 +21,7 @@ def load_pokemons():
     return map
 
 def load_medals():
-    with open("jsons\medals.json", "r") as file:
+    with open("jsons\_badges.json", "r") as file:
         medals = json.load(file)
         size = len(medals)
     
