@@ -1,5 +1,6 @@
-from PC_medic import add_pokemon_PC
+from storage import add_pokemon_PC
 import random
+import team, script.menus
 
 def create_team():
     team = [None for _ in range(6)]
@@ -46,3 +47,16 @@ def find_none(team):
     if None in team:
         return team.index(None)
     return None
+
+def search (team, pokemon):
+    found = False
+    if is_empty(team):
+        print("Your Team is empty")
+        print()
+        script.menus.enter_to_continue()
+    else:
+        for i in team:
+            if (i.name).lower() == pokemon.lower():
+                found = True
+                index = i
+    return found, index

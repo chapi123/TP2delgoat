@@ -51,6 +51,12 @@ def sorting_PC_title():
     print("==========================")
     print()
 
+def main_team_title():
+    print("=" * 45)
+    print(" " * 16 + "MAIN TEAM")
+    print("=" * 45)
+    print()
+
 def sorting_PC_menu():
     sorting_PC_title()
     print("How would you like to sort your PC?")
@@ -141,3 +147,40 @@ def not_found_menu(input):
     print(f"{input} is not in your team.")
     print()
     enter_to_continue()
+
+def pokemon_center_title():
+    print("=" * 45)
+    print(" " * 13 + "POKEMON CENTER")
+    print("=" * 45)
+
+def pokemon_center_menu():
+    pokemon_center_title()
+    print()
+    print("1. Heal Team")
+    print("2. Exit")
+    print()
+    try:
+        option = int(input("Select an option: "))
+        return option
+    except:
+        return "Invalid option"
+    
+def professor_oak_transfer_title():
+    print("=" * 45)
+    print("        TRANSFER TO PROFESSOR OAK")
+    print("=" * 45)
+
+def profesor_oak_transfer_menu():
+    professor_oak_transfer_title()
+    print()
+    print("1. Transfer a Pokemon from your Team")
+    print("2. Transfer a Pokemon from your PC")
+    print("3. Undo Last Transfer")
+    print("4. Exit")
+    print()
+    try:
+        option = int(input("Select an option: "))
+        return option
+    except:
+        return "Invalid option"
+

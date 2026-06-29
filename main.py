@@ -1,27 +1,27 @@
-import PC_medic
+import storage
 import script.pokemons
 import script.menus as menus
 import team
-import os, random
+import os, random, time
 
 def clear():
     os.system('cls')
     
 class Game:
     def __init__(self):
-        self.PC = PC_medic.create_PC()
-        self.medic = PC_medic.create_medic()
+        self.PC = storage.create_PC()
+        self.center = storage.create_center()
         self.pokedex = script.pokemons.load_pokemons() 
         self.all_medals = script.pokemons.load_medals()
         self.obtained_medals = script.pokemons.preload_medals(self.all_medals)
         self.team = team.create_team()
+        self.profesor_stack = storage.create_profesor_stack()
 
 
     def run(self):
         while True:
             clear()
             option = menus.main_menu()
-            #team.random_team(self.team,self.pokedex)
             #self.PC.add_node(script.pokemons.select_random_pokemon(self.pokedex))
             
             if option == 1:
@@ -62,8 +62,11 @@ class Game:
                     menus.enter_to_continue()
         
             elif option == 2:
+                team.random_team(self.team,self.pokedex)
                 clear()
+                menus.main_team_title()
                 team.show_team(self.team)
+                print()
                 menus.enter_to_continue()
 
             elif option == 3:
@@ -134,7 +137,7 @@ class Game:
                                         break
 
                                     elif option2 == 2:
-                                        PC_medic.add_pokemon_PC(self.PC, selected)
+                                        storage.add_pokemon_PC(self.PC, selected)
                                         break
 
                                     else:
@@ -208,17 +211,121 @@ class Game:
 
             elif option == 7:
                 clear()
-                found = False
                 option1 = menus.find_pokemon_menu()
-                for i in self.team:
-                    if (i.name).lower() == option1:
-                        clear()
-                        menus.found_pokemon_menu(i)
-                        found = True
-                if not found:
+                found, index = team.search(self.team, option1)
+
+                if found:
+                    clear()
+                    menus.found_pokemon_menu(index)
+                else:
                     clear()
                     menus.not_found_menu(option1)
-                    
+            
+            elif option == 8:
+                if not team.is_empty(self.team):
+                    clear()
+                    while True:
+                        option1 = menus.pokemon_center_menu()
+                        if option1 == 1:
+                            clear()
+                            menus.pokemon_center_title()
+                            print("Healing your Pokemons...")
+                            for i in self.team:
+                                self.center.enqueue(i)
+                            for i in self.center.values():
+                                clear()
+                                menus.pokemon_center_title()
+                                healed = self.center.dequeue()
+                                print(f"{healed.name} is being healed...")
+                                time.sleep(1)
+                                print()
+                                print(f"{healed.name} was healed")
+                                time.sleep(1)
+                            
+                            clear()
+                            menus.pokemon_center_title()
+                            print()
+                            print("Your Pokemons have been Healed!")
+                            print()
+                            menus.enter_to_continue()
+                            break
+                        elif option1 == 2:
+                            break
+                        else: 
+                            print("Invalid option")
+                            menus.enter_to_continue()
+                else:
+                    clear()
+                    menus.pokemon_center_title()
+                    print("Your team is empty")
+                    print()
+                    menus.enter_to_continue()
+
+            elif option == 9:
+                clear()
+                while True:
+                    option1 = menus.profesor_oak_transfer_menu()
+                    if option1 == 1:
+                        clear()
+                        menus.professor_oak_transfer_title()
+                        if team.is_empty(self.team):
+                            print("Your Team is empty")
+                            print()
+                            menus.enter_to_continue()
+                        else:
+                            
+                            while True:
+                                try:
+                                    menus.professor_oak_transfer_title()
+                                    team.show_team(self.team)
+                                    print()
+                                    option2 = int(input("Select a Pokemon's ID: "))
+                                    break
+                                except:
+                                    print("Invalid option")
+                                    print()
+                                    menus.enter_to_continue()
+
+                            for i in self.team:
+                                if i.id == option2:
+                                    if self.profesor_stack.push(i):
+                                        clear()
+                                        menus.professor_oak_transfer_title()
+                                        print("Transfering to Profesor Oak...")
+                                        time.sleep(2)
+                                        clear()
+                                        menus.professor_oak_transfer_title()
+                                        print (f"{i.name} was transfered to profesor Oak")
+                                        option3 = input("Cancel Transfer? (Y/N): ")
+                                        index = self.team.index(i)
+                                        self.team[index] = None
+                                        if option3.lower() == "y":
+                                            popped = self.profesor_stack.pop()
+                                            index = team.find_none(self.team)
+                                            self.team[index] = popped
+                                            print(f"{popped.name} was tranfered back to your Team")
+                                            break
+                                        if option3.lower() == "n":
+                                            break
+                                        else:
+                                            print("Invalid Option")
+                                            print()
+                                            menus.enter_to_continue()
+
+                    elif option1 == 2:
+                        if self.PC.count_nodes() == 0:
+                            print("Your PC is empty")
+                            print()
+                            menus.enter_to_continue()
+                        else:
+                            pass
+                    elif option1 == 3:
+                        pass
+                    elif option1 == 4:
+                        break
+                    else: pass
+
+
             elif option == 12:
                 clear()
                 print("Thanks for playing")

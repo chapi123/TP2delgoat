@@ -8,7 +8,11 @@ class Stack:
             self.instance = SingleLink()
 
     def push(self,data):
-        self.instance.add_node(data)
+        if self.instance.count_nodes() < 5:
+            self.instance.add_node(data)
+            return True
+        else:
+            return False
     
     def pop(self):
         if self.instance.head is None:
@@ -30,6 +34,7 @@ class Stack:
         current.next = None
 
         return popped.data
+
     
     def peek(self):
         if self.instance.head == None:
@@ -41,6 +46,16 @@ class Stack:
     
     def size(self):
         return self.instance.count_nodes()
+    
+    def values(self):
+        values = []
+        current = self.instance.head
+
+        while current is not None:
+            values.append(current.data)
+            current = current.next
+
+        return values
     
 class Queue:
     def __init__(self, values=None):
@@ -74,3 +89,13 @@ class Queue:
     
     def size(self):
         return self.instance.count_nodes()
+    
+    def values(self):
+        values = []
+        current = self.instance.head
+
+        while current is not None:
+            values.append(current.data)
+            current = current.next
+
+        return values
