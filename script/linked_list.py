@@ -207,3 +207,15 @@ class SingleLink:
 
         if prev_node == self.tail:
             self.tail = new_node
+
+    def values(self):
+        values = []
+
+        for bucket in self.buckets:
+            current = bucket.head
+
+            while current is not None:
+                values.append(current.data[1])
+                current = current.next
+
+        return values

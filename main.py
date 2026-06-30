@@ -267,8 +267,8 @@ class Game:
                     option1 = menus.profesor_oak_transfer_menu()
                     if option1 == 1:
                         clear()
-                        menus.professor_oak_transfer_title()
                         if team.is_empty(self.team):
+                            menus.professor_oak_transfer_title()
                             print("Your Team is empty")
                             print()
                             menus.enter_to_continue()
@@ -276,6 +276,7 @@ class Game:
                             
                             while True:
                                 try:
+                                    clear()
                                     menus.professor_oak_transfer_title()
                                     team.show_team(self.team)
                                     print()
@@ -285,7 +286,7 @@ class Game:
                                     print("Invalid option")
                                     print()
                                     menus.enter_to_continue()
-
+                            found = False
                             for i in self.team:
                                 if i.id == option2:
                                     if self.profesor_stack.push(i):
@@ -311,6 +312,16 @@ class Game:
                                             print("Invalid Option")
                                             print()
                                             menus.enter_to_continue()
+                                    else: 
+                                        print("Profesor Oak has 5 Pokemons already")
+                                        print()
+                                        menus.enter_to_continue()
+                                    found == True
+                            if not found:
+                                print(f"Pokemon with {option2} ID was not found")
+                                print()
+                                menus.enter_to_continue()
+                                break
 
                     elif option1 == 2:
                         if self.PC.count_nodes() == 0:
@@ -318,12 +329,64 @@ class Game:
                             print()
                             menus.enter_to_continue()
                         else:
-                            pass
+                            while True:
+                                try:
+                                    clear()
+                                    menus.professor_oak_transfer_title()
+                                    self.PC.print_PC_values()
+                                    print()
+                                    option2 = int(input("Select a Pokemon's ID: "))
+                                    break
+                                except:
+                                    print("Invalid option")
+                                    print()
+                                    menus.enter_to_continue()
+                            for i in self.PC.values():
+                                if i.id == option2:
+                                    if self.profesor_stack.push(i):
+                                        clear()
+                                        menus.professor_oak_transfer_title()
+                                        print("Transfering to Profesor Oak...")
+                                        time.sleep(2)
+                                        clear()
+                                        menus.professor_oak_transfer_title()
+                                        print (f"{i.name} was transfered to profesor Oak")
+                                        option3 = input("Cancel Transfer? (Y/N): ")
+                                        self.PC.delete(i)
+                                        if option3.lower() == "y":
+                                            popped = self.profesor_stack.pop()
+                                            self.PC.add_node(i)
+                                            print(f"{popped.name} was tranfered back to your Team")
+                                            break
+                                        if option3.lower() == "n":
+                                            break
+                                        else:
+                                            print("Invalid Option")
+                                            print()
+                                            menus.enter_to_continue()
+                                    else: 
+                                        print("Profesor Oak has 5 Pokemons already")
+                                        print()
+                                        menus.enter_to_continue()
+                                    found == True
+                            if not found:
+                                print(f"Pokemon with {option2} ID was not found")
+                                print()
+                                menus.enter_to_continue()
+
                     elif option1 == 3:
-                        pass
+                        clear()
+                        popped = self.profesor_stack.pop()
+                        self.PC.add_node(i)
+                        print(f"{popped.name} was tranfered back to your PC")
+                        print()
+                        menus.enter_to_continue()
+
                     elif option1 == 4:
                         break
-                    else: pass
+                    else:
+                        print("Invalid option")
+                        menus.enter_to_continue()
 
 
             elif option == 12:
@@ -333,7 +396,6 @@ class Game:
             else: 
                 print("Invalid option")
                 menus.enter_to_continue()
-            
             
 
 Game().run()
