@@ -82,17 +82,32 @@ class HashMap:
                 current = current.next
 
         return keys
+    
+    def search_pokemon_by_id(pokedex, target):
+        ids = pokedex.keys()
+        ids.sort()
+
+        left = 0
+        right = len(ids) - 1
+
+        while left <= right:
+            mid = (left + right) // 2
+
+            if ids[mid] == target:
+                return pokedex.get(target)
+
+            elif ids[mid] < target:
+                left = mid + 1
+
+            else:
+                right = mid - 1
+
+        return None
 
 class HashSet:
     def __init__(self, size):
         self.size = size
         self.buckets = [SingleLink() for _ in range(size)]
-
-    def hash(self, data):
-        total = 0
-        for char in str(data):
-            total += ord(char)
-        return total
 
     def get_index(self, key):
         return key % self.size

@@ -61,8 +61,8 @@ def sorting_PC_menu():
     sorting_PC_title()
     print("How would you like to sort your PC?")
     print("1. Alphabetically")
-    print("2. By CP")
-    print("3. By Type")
+    print("2. By Type")
+    print("3. By CP")
     print("4. Exit")
     print()
     try:
@@ -170,7 +170,7 @@ def professor_oak_transfer_title():
     print("        TRANSFER TO PROFESSOR OAK")
     print("=" * 45)
 
-def profesor_oak_transfer_menu():
+def professor_oak_transfer_menu():
     professor_oak_transfer_title()
     print()
     print("1. Transfer a Pokemon from your Team")
@@ -184,3 +184,77 @@ def profesor_oak_transfer_menu():
     except:
         return "Invalid option"
 
+def gym_challenge_title():
+    print("=" * 55)
+    print("                    GYM CHALLENGE")
+    print("=" * 55)
+    print()
+
+def gym_challenge_menu():
+    gym_challenge_title()
+    badges = [
+    "Boulder Badge",
+    "Cascade Badge",
+    "Thunder Badge",
+    "Rainbow Badge",
+    "Soul Badge",
+    "Marsh Badge",
+    "Volcano Badge",
+    "Earth Badge"
+]
+    print("Choose a Gym Leader:")
+    print()
+    print("1. Pewter Gym     - Brock      (Boulder Badge)")
+    print("2. Cerulean Gym   - Misty      (Cascade Badge)")
+    print("3. Vermilion Gym  - Lt. Surge  (Thunder Badge)")
+    print("4. Celadon Gym    - Erika      (Rainbow Badge)")
+    print("5. Fuchsia Gym    - Koga       (Soul Badge)")
+    print("6. Saffron Gym    - Sabrina    (Marsh Badge)")
+    print("7. Cinnabar Gym   - Blaine     (Volcano Badge)")
+    print("8. Viridian Gym   - Giovanni   (Earth Badge)")
+    print("9. Exit")
+    print("=" * 55)
+
+    try:
+        option = int(input("Select a Gym: "))
+        if 0 > option and option < 9:
+            return badges[option]
+        else:
+            return option
+    except:
+        return "Invalid option"
+    
+def badge_earned_menu(badge):
+    print("=" * 45)
+    print(" " * 14 + "VICTORY!")
+    print("=" * 45)
+    print()
+    print("Congratulations!")
+    print(f"You defeated the Gym Leader!")
+    print(f"You earned the {badge}!")
+    print()
+    enter_to_continue()
+
+
+def badge_already_owned_menu(badge):
+    print("=" * 45)
+    print(" " * 10 + "BADGE ALREADY OWNED")
+    print("=" * 45)
+    print()
+    print(f"You defeated the Gym Leader again!")
+    print(f"You already have the {badge}.")
+    print("No new badge was awarded.")
+    print()
+    enter_to_continue()
+
+
+def badge_not_earned_menu():
+    print("=" * 45)
+    print(" " * 16 + "DEFEAT")
+    print("=" * 45)
+    print()
+    print("You lost the Gym Battle.")
+    print("Better luck next time!")
+    print("No badge was earned.")
+    print()
+    enter_to_continue()

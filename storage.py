@@ -12,6 +12,6 @@ def create_center ():
 def add_pokemon_PC(PC, pokemon):
     PC.add_node(pokemon)
 
-def create_profesor_stack():
+def create_professor_stack():
     stack = Stack()
     return stack
