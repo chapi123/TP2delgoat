@@ -27,6 +27,7 @@ class Game:
             for _ in range(5):
                 self.PC.add_node(script.pokemons.select_random_pokemon(self.pokedex))
             
+            
             if option == 1:
                 logic.view_pokedex(self.pokedex)
         
@@ -46,6 +47,7 @@ class Game:
                 logic.sort_PC(self.PC)
 
             elif option == 7:
+                team.random_team(self.team, self.pokedex)
                 logic.search_pokemon_in_team(self.team)
 
             elif option == 8:

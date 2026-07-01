@@ -192,6 +192,7 @@ def sort_PC(PC):
 
 def search_pokemon_in_team(team_l):
     clear()
+    team.show_team(team_l)
     option1 = menus.find_pokemon_menu()
     found, index = team.search(team_l, option1)
 

@@ -40,7 +40,7 @@ def partition(array, low, high):  # funcion que acomoda elementos alrededor del 
     i = low - 1                   # indice del elemento menor
 
     for j in range(low, high):    # recorre el arreglo desde low hasta high-1
-        if array[j].CP <= pivot.CP:     # verifica si el elemento es menor o igual al pivote
+        if array[j].CP >= pivot.CP:     # verifica si el elemento es menor o igual al pivote
             i += 1                # aumenta el indice
             array[i], array[j] = array[j], array[i]  # intercambia posiciones
 

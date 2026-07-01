@@ -59,4 +59,6 @@ def search (team, pokemon):
             if (i.name).lower() == pokemon.lower():
                 found = True
                 index = i
-    return found, index
+    if found:
+        return found, index
+    else: return found, -1
