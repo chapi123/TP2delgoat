@@ -63,7 +63,7 @@ Bubble Sort: Su peor caso y el promedio es O(n²), entonces con los 6.000 pokemo
 Quick Sort: Su peor caso es O(n²), sin embargo, el caso promedio es O(n.log n), usando este caso promedio tenemos un 
 total de operaciones de 6.000 x log(6.000) ≈  6.000 x 12,5 = 75.000 operaciones.
 
-Con esto en cuenta llegamos a la conclusión de que el quick sort es mucho más conveniente, sin embargo, por la implementación
-utilizada en el proyecto, su peor caso puede ser igual al de un bubble sort ya que la función partition, usada en el quick sort,
-siempre elige como pivote el último elemento, resultando en que por cada partición se corte 1 elemento de la lista, deformando
-su complejidad hasta el mismo caso que el de un bubble sort, O(n²).
+Con esto en cuenta llegamos a la conclusión de que el quick sort es mucho más conveniente, sin embargo, por la 
+implementación utilizada en el proyecto, su peor caso puede ser igual al de un bubble sort ya que la función partition, 
+usada en el quick sort, siempre elige como pivote el último elemento, resultando en que por cada partición se corte 1 
+elemento de la lista, deformando su complejidad hasta el mismo caso que el de un bubble sort, O(n²).

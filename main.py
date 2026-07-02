@@ -16,7 +16,6 @@ class Game:
         self.team = team.create_team()
         self.professor_stack = storage.create_professor_stack()
 
-
     def run(self):
         while True:
             logic.clear()
@@ -60,6 +59,7 @@ class Game:
 
             elif option == 13:
                 logic.exit()
+
             else: 
                 logic.else_()
             

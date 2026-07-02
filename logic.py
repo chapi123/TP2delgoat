@@ -114,11 +114,16 @@ def capture_new_pokemon(pokedex, PC, team_l):
                         if option2 == 1:
                             clear()
                             menus.pokemon_caught_title()
-                            if team.add_pokemon_team(team_l, selected, PC):
+
+                            result = team.add_pokemon_team(team_l, selected, PC)
+
+                            if result == "added":
                                 print(f"{selected.name} joined your party!")
-                            else:
+
+                            elif result == "full":
                                 print("Your Main Team is full")
                                 print(f"{selected.name} was sent to the PC!")
+
                             break
 
                         elif option2 == 2:
@@ -196,7 +201,6 @@ def sort_PC(PC):
 
 def search_pokemon_in_team(team_l):
     clear()
-    team.show_team(team_l)
     option1 = menus.find_pokemon_menu()
     found, index = team.search(team_l, option1)
 
@@ -222,12 +226,13 @@ def send_pokemon_to_pokemon_center(team_l, center):
                     clear()
                     menus.pokemon_center_title()
                     healed = center.dequeue()
-                    print(f"{healed.name} is being healed...")
-                    time.sleep(1)
-                    print()
-                    print(f"{healed.name} was healed")
-                    time.sleep(1)
-                
+                    if healed is not None:
+                        print(f"{healed.name} is being healed...")
+                        time.sleep(1)
+                        print()
+                        print(f"{healed.name} was healed")
+                        time.sleep(1)
+                        
                 clear()
                 menus.pokemon_center_title()
                 print()

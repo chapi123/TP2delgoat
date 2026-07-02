@@ -31,17 +31,20 @@ def show_team(team):
 def is_empty(team):
     return all(x is None for x in team)
 
-def add_pokemon_team(team, pokemon, PC):
-    if pokemon not in team:
-        index = find_none(team)
-        if index is not None:
-            team[index] = pokemon
-            return True
-    else:
+def add_pokemon_team(team_l, pokemon, PC):
+    if pokemon in team_l:
         print(f"{pokemon.name} is already in your Team")
         print(f"Moving {pokemon.name} to your PC")
-        add_pokemon_PC(PC, pokemon)
-        return None
+        PC.add_node(pokemon)
+        return "duplicate"
+
+    index = find_none(team_l)
+
+    if index is None:
+        return "full"
+
+    team_l[index] = pokemon
+    return "added"
 
 def find_none(team):
     if None in team:
