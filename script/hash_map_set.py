@@ -135,8 +135,7 @@ class HashSet:
 
     def remove(self, data):
         index = self.get_index(hash(data))
-        bucket = self.buckets[index]
-        bucket.data
+        return self.buckets[index].delete(data)
 
     def print_set(self):
         for i, bucket in enumerate(self.buckets):

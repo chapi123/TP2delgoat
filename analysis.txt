@@ -1,0 +1,69 @@
+                         ----  Análisis de Complejidad Algorítmica ----
+                                        Santiago Chaparro
+
+
+
+1. Al momento de insertar un nuevo Pokémon capturado, ¿cuál es la complejidad temporal expresada en Notación Big O
+   de agregarlo al final del Equipo Principal (array) versus agregarlo al inicio de la PC (Lista Enlazada)? Justificá.
+
+Mi implementación del array del equipo del jugador tiene un tamaño fijo, es decir que su complejidad temporal es O(n),
+porque se recorre en búsqueda de un None, sin embargo, en este caso n siempre va a ser 6, entonces la complejidad 
+también es fija, por lo tanto es O(1).
+
+Ahora, en caso de usar un array de tamaño variable con límite de tamaño en 6, al momento de agregar un nuevo valor al
+final, se accede al tamaño de este array y se agrega en ese tamaño más 1 resultando en una complejidad fija de O(1).
+
+En cambio, si se hace uso de una Linked List y se agrega un valor nuevo sobre la head, implementación que tampoco fue 
+usada en este proyecto, la complejidad es la misma, O(1). Esto se debe a cómo funciona la Linked List y el nodo head
+junto a su puntero, si queremos reemplazarlo podemos hacer que otro valor sea la head y apunte a la head anterior como
+se ve en el siguiente gráfico:
+
+
+    NUEVO NODO (nueva head)                       HEAD ANTERIOR
+
+┌─────────────┬─────────────┐              ┌─────────────┬─────────────┐
+│    DATA     │   POINTER   │              │    DATA     │   POINTER   │
+│  Pokemon()  │    next   ──┼─────────────▶│  Pokemon()  │    next   ──┼──▶ sig. nodo...
+└─────────────┴─────────────┘              └─────────────┴─────────────┘
+
+Por lo tanto podemos concluir que ambas estructuras tienen la misma complejidad en estos casos.
+
+
+
+
+2. En términos de eficiencia de búsqueda temporal, explicá por qué la Pokédex se implementó utilizando un Hash Map en
+   lugar de una Lista de Python convencional. Desarrollá y justificá lo mejor que puedas.
+
+
+Una búsqueda sobre un array tiene una complejidad de O(n) en el peor caso, esto porque se debe recorrer todos los datos
+para dar con el que se desea (con una búsqueda binaria no se recorren todos y tiene una complejidad de O(log n)).
+
+En cambio en la búsqueda sobre este Hash Map se hace uso de la función Hash, esta función recibe un valor y devuelve
+este valor hasheado. A partir de este valor se consigue el índice haciendo el módulo de este con el tamaño del Map.
+Con este cálculo se puede acceder rápidamente al índice de un valor, únicamente se debe pasar el valor a una función
+que hashee este valor y haciendo el módulo acceda a su índice y por consecuencia al valor buscado con una complejidad
+fija de O(1), siendo este 1 el cálculo de hash(key) % size.
+
+Sabiendo esto podemos asegurar que el uso de un Hash Map resulta conveniente para acceder al índice de un valor ya que
+su complejidad es fija, a diferencia de un array cuya complejidad depende del tamaño del mismo.
+
+
+
+
+3. Al ordenar una PC con 6.000 Pokémon capturados, analizá teóricamente el rendimiento del algoritmo bubble sort frente
+   al quick sort. Mencioná el peor caso para ambos.
+
+
+Para entender los rendimientos de ambos algoritmos de ordenamiento, primero debemos calcular la cantidad de operaciones
+que realizarán en su peor caso:
+
+Bubble Sort: Su peor caso y el promedio es O(n²), entonces con los 6.000 pokemones haría un total de operaciones de 
+6.000² = 36.000.000 operaciones.
+
+Quick Sort: Su peor caso es O(n²), sin embargo, el caso promedio es O(n.log n), usando este caso promedio tenemos un 
+total de operaciones de 6.000 x log(6.000) ≈  6.000 x 12,5 = 75.000 operaciones.
+
+Con esto en cuenta llegamos a la conclusión de que el quick sort es mucho más conveniente, sin embargo, por la implementación
+utilizada en el proyecto, su peor caso puede ser igual al de un bubble sort ya que la función partition, usada en el quick sort,
+siempre elige como pivote el último elemento, resultando en que por cada partición se corte 1 elemento de la lista, deformando
+su complejidad hasta el mismo caso que el de un bubble sort, O(n²).

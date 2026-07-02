@@ -16,7 +16,7 @@ class Stack:
     
     def pop(self):
         if self.instance.head is None:
-            raise IndexError("empty stack")
+            return None
 
         if self.instance.head.next == None:
             popped = self.instance.head

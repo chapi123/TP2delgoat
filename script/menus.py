@@ -14,7 +14,8 @@ def main_menu():
     print(" 9. Transfer Pokemon to Professor Oak")
     print("10. Undo last transfer")
     print("11. Challenge Gym Leader")
-    print("12. Exit system")
+    print("12. Manage Team")
+    print("13. Exit system")
     print("=" * 55)
 
     try:
@@ -217,10 +218,12 @@ def gym_challenge_menu():
 
     try:
         option = int(input("Select a Gym: "))
-        if 0 > option and option < 9:
-            return badges[option]
+        if 1 <= option <= 8:
+            return badges[option - 1]
+        elif option == 9:
+            return None
         else:
-            return option
+            return "Invalid option"
     except:
         return "Invalid option"
     
@@ -233,7 +236,6 @@ def badge_earned_menu(badge):
     print(f"You defeated the Gym Leader!")
     print(f"You earned the {badge}!")
     print()
-    enter_to_continue()
 
 
 def badge_already_owned_menu(badge):
@@ -245,7 +247,6 @@ def badge_already_owned_menu(badge):
     print(f"You already have the {badge}.")
     print("No new badge was awarded.")
     print()
-    enter_to_continue()
 
 
 def badge_not_earned_menu():
@@ -257,4 +258,42 @@ def badge_not_earned_menu():
     print("Better luck next time!")
     print("No badge was earned.")
     print()
-    enter_to_continue()
+
+def wild_pokemon_title():
+    print("=" * 45)
+    print(" " * 13 + "WILD POKEMON")
+    print("=" * 45)
+    print()
+
+def pokemon_caught_title():
+    print("=" * 45)
+    print(" " * 15 + "POKEMON CAUGHT")
+    print("=" * 45)
+    print()
+
+def pokemon_escaped_title():
+    print("=" * 45)
+    print(" " * 15 + "POKEMON ESCAPED")
+    print("=" * 45)
+    print()
+
+def manage_team_title():
+    print("=" * 45)
+    print(" " * 14 + "MANAGE TEAM")
+    print("=" * 45)
+    print()
+
+def manage_team_menu():
+    manage_team_title()
+    print("What would you like to do?")
+    print("1. View Team")
+    print("2. Move a Pokemon to PC")
+    print("3. Bring a Pokemon from PC")
+    print("4. Swap two Pokemon positions")
+    print("5. Exit")
+    print()
+    try:
+        option = int(input("Select an option: "))
+        return option
+    except:
+        return "Invalid option"

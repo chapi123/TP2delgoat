@@ -1,6 +1,6 @@
 from storage import add_pokemon_PC
 import random
-import team, script.menus
+import script.menus
 
 def create_team():
     team = [None for _ in range(6)]
@@ -56,9 +56,31 @@ def search (team, pokemon):
         script.menus.enter_to_continue()
     else:
         for i in team:
-            if (i.name).lower() == pokemon.lower():
+            if i is not None and (i.name).lower() == pokemon.lower():
                 found = True
                 index = i
     if found:
         return found, index
     else: return found, -1
+
+def move_to_PC(team, index, PC):
+    pokemon = team[index]
+    if pokemon is None:
+        return False
+    add_pokemon_PC(PC, pokemon)
+    team[index] = None
+    return True
+
+def bring_from_PC(team, PC, pokemon_id):
+    for pokemon in PC.values():
+        if pokemon.id == pokemon_id:
+            index = find_none(team)
+            if index is None:
+                return False, "full"
+            team[index] = pokemon
+            PC.delete(pokemon)
+            return True, pokemon
+    return False, "not_found"
+
+def swap_positions(team, i, j):
+    team[i], team[j] = team[j], team[i]

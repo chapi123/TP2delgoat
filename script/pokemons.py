@@ -34,9 +34,6 @@ def load_medals():
 import random
 
 def preload_medals(medals_set):
-    import random
-
-def preload_medals(medals_set):
     set = HashSet(2)
     medals = list(medals_set.values())
     counter = 0

@@ -210,12 +210,10 @@ class SingleLink:
 
     def values(self):
         values = []
+        current = self.head
 
-        for bucket in self.buckets:
-            current = bucket.head
-
-            while current is not None:
-                values.append(current.data[1])
-                current = current.next
+        while current is not None:
+            values.append(current.data)
+            current = current.next
 
         return values

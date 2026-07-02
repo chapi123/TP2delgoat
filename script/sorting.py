@@ -1,7 +1,3 @@
-import random
-import time
-import matplotlib.pyplot as plt
-
 def bubble_sort(listt):
     for i in range(len(listt)):
         for i in range(len(listt) - 1):

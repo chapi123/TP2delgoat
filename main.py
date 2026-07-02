@@ -4,9 +4,6 @@ import script.menus as menus
 import team
 import os, random
 import logic
-
-def clear():
-    os.system('cls')
     
 
 class Game:
@@ -22,11 +19,8 @@ class Game:
 
     def run(self):
         while True:
-            clear()
+            logic.clear()
             option = menus.main_menu()
-            for _ in range(5):
-                self.PC.add_node(script.pokemons.select_random_pokemon(self.pokedex))
-            
             
             if option == 1:
                 logic.view_pokedex(self.pokedex)
@@ -47,7 +41,6 @@ class Game:
                 logic.sort_PC(self.PC)
 
             elif option == 7:
-                team.random_team(self.team, self.pokedex)
                 logic.search_pokemon_in_team(self.team)
 
             elif option == 8:
@@ -60,9 +53,12 @@ class Game:
                 logic.undo_last_transfer(self.professor_stack, self.PC)
 
             elif option == 11:
-                logic.challenge_gym_leader(self.obtained_medals)
+                logic.challenge_gym_leader(self.obtained_medals, self.team)
 
             elif option == 12:
+                logic.manage_team(self.team, self.PC)
+
+            elif option == 13:
                 logic.exit()
             else: 
                 logic.else_()
